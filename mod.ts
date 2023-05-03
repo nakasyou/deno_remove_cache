@@ -3,7 +3,7 @@ import {
   path,
 } from "./deps.ts";
 import {
-  isdir,
+  isDir,
   npmparse,
   type NpmparseReturn,
 } from "./utils.ts";
@@ -30,7 +30,7 @@ async function removeCache(removePath: string): Promise<void>{
 }
 
 export {
-  isdir,
+  isDir,
   npmparse,
   type NpmparseReturn,
   removeCache,
