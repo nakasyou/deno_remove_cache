@@ -8,6 +8,10 @@ import {
   type NpmparseReturn,
 } from "./utils.ts";
 
+/**
+ * Function to delete Cache in Deno.
+ * @param removePath - Path to be deleted
+ */
 async function removeCache(removePath: string): Promise<void>{
   const denodir = (await getDenoDir()).replace("DENO_DIR location","").split(" ").slice(1).join("");
   const url = new URL(removePath);

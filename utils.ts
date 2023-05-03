@@ -1,3 +1,8 @@
+/**
+ * Verify the existence of the directory
+ * @param path - path to be checked
+ * @returns Result boolean
+ */
 export async function isDir(path: string): Promise<boolean>{
   try{
     const { isDirectory } = await Deno.stat(path);
@@ -12,6 +17,18 @@ export interface NpmparseReturn {
   version: string;
 }
 
+/**
+ * Parses the npm url for Deno.
+ * @param repo - Deno's npm URL without `npm:`.
+ * @example
+ * Parse @actions/core
+ * ```ts
+ * npmparse("@actions/core")
+ * // { reponame: "@actions/core", version: "" }
+ * npmparse("@actions/core@1.10.0")
+ * // { reponame: "@actions/core", version: "1.10.0"}
+ * ```
+ */
 export function npmparse(repo: string): NpmparseReturn{
   let version = "";
   let reponame = "";
