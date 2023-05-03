@@ -8,7 +8,7 @@ deno run --allow-read --allow-run --allow-write https://deno.land/x/remove_cache
 インストールして実行する場合: 
 ```shell
 # 初回インストール/アップデート時
-deno install --allow-read --allow-run --force --name remove_cache https://deno.land/x/remove_cache/cli.ts
+deno install --allow-read --allow-run --allow-write --force --name remove_cache https://deno.land/x/remove_cache/cli.ts
 # 実行
 remove_cache <delete_url>
 ```
