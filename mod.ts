@@ -35,8 +35,8 @@ if(["https:","http:"].includes(url.protocol)){
   removeFilePath = path.join(denodir,"deps",url.protocol.slice(0,-1),url.host);
 }else if(url.protocol === "npm:"){
   const { reponame,  version } = npmparse(url.pathname);
-  removeFilePath = path.join(denodir,"deps","npm/registry.npmjs.org",reponame,version);
+  removeFilePath = path.join(denodir,"npm/registry.npmjs.org",reponame,version);
 }
-if(isDir(removeFilePath)){
+if(await isDir(removeFilePath)){
   await Deno.remove(removeFilePath, { recursive: true });
 }
