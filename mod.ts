@@ -2,32 +2,12 @@ import {
   getDenoDir,
   path,
 } from "./deps.ts";
+import {
+  isdir,
+  npmparse,
+  type NpmparseReturn,
+} from "./utils.ts";
 
-async function isDir(path: string): Promise<boolean> {
-  try {
-    const { isDirectory } = await Deno.stat(path);
-    return isDirectory;
-  } catch {
-    return false;
-  }
-}
-
-function npmparse(repo){
-  let version = "";
-  let reponame;
-  if(repo.slice(1).includes("@")){
-    // have version
-    version = repo.slice(1).split("@").at(-1);
-    reponame = repo.split("@").slice(0,-1).join("@");
-  }else{
-    // don't have version
-    reponame = repo;
-  }
-  return {
-    reponame,
-    version
-  };
-}
 
 const removePath = Deno.args[0];
 const denodir = (await getDenoDir()).replace("DENO_DIR location","").split(" ").slice(1).join("");
