@@ -1,4 +1,3 @@
-await (async(removePath)=>{
 async function isDir(path: string): Promise<boolean> {
   try {
     const { isDirectory } = await Deno.stat(path);
@@ -24,6 +23,8 @@ function npmparse(repo){
     version
   };
 }
+
+const removePath = Deno.args[0];
 const denodir = (await getDenoDir()).replace("DENO_DIR location","").split(" ").slice(1).join("");
 const url = new URL(removePath);
 let removeFilePath;
@@ -36,4 +37,3 @@ if(["https:","http:"].includes(url.protocol)){
 if(isDir(removeFilePath)){
   await Deno.remove(removeFilePath, { recursive: true });
 }
-})("npm:express")
