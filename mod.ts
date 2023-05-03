@@ -1,3 +1,5 @@
+import * as path from "https://deno.land/std@0.185.0/path/mod.ts";
+
 async function isDir(path: string): Promise<boolean> {
   try {
     const { isDirectory } = await Deno.stat(path);
